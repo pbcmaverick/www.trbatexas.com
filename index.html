@@ -438,14 +438,14 @@ main section.page.active{display:block}
 @media (max-width:520px){.coming-grid{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.ccard{transition:none}.ccard:hover{transform:none}}
 .verse-band{position:relative;overflow:hidden;background:var(--navy);padding-block:clamp(56px,9vw,104px)}
-.verse-band .pm{position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);gap:3px;opacity:.85}
+.verse-band .pm{position:absolute;inset:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));grid-auto-rows:136px;align-content:center;overflow:hidden;gap:3px;opacity:.85}
 .verse-band .pm img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.4)}
 .verse-band::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,42,79,.96) 0%,rgba(0,42,79,.88) 45%,rgba(0,42,79,.45) 100%)}
 .verse-band .wrap{position:relative;z-index:1}
 .verse-band blockquote{margin:0;max-width:36ch;display:grid;gap:18px}
 .verse-band blockquote p{font-family:var(--display);font-weight:700;color:#fff;font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.25;letter-spacing:-.01em;margin:0}
 .verse-band cite{font-style:normal;color:var(--river);font-weight:700;font-size:1rem}
-@media (max-width:700px){.verse-band .pm{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:700px){.verse-band .pm{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));grid-auto-rows:88px}}
 .photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .photo-grid.two{grid-template-columns:repeat(2,1fr)}
 .photo-grid.two figure{aspect-ratio:16/7}
@@ -1905,7 +1905,7 @@ renderChips(); renderDir();
     track.addEventListener("click",e=>{const a=e.target.closest("[data-st]");if(!a)return;town=a.dataset.st;renderChips();renderDir();});}
   const banners={events:["Events &amp; ","news"],about:["About ","TRBA"],ministries:["Our ","ministries"],opportunities:["Church ","opportunities"],join:["Become a ","member church"],help:["Find ","help near you"],contact:["Contact ","us"],"about-god":["Know ","God"],churches:["Our ","churches"]};
   Object.entries(banners).forEach(([id,[a,b]],i)=>{const sec=document.getElementById(id);if(!sec)return;const div=document.createElement("div");div.className="pbanner";div.setAttribute("aria-hidden","true");div.innerHTML=`<div class="pm">${pick(8,i*3+1).map(([k,s])=>`<img src="${s}" alt="">`).join("")}</div><div class="wrap"><b>${a}<i>${b}</i></b></div>`;sec.prepend(div);});
-  const vm=document.getElementById("verseMosaic"); if(vm) vm.innerHTML=pick(12,4).map(([k,s])=>`<img src="${s}" alt="">`).join("");
+  const vm=document.getElementById("verseMosaic"); if(vm) vm.innerHTML=pick(40,4).map(([k,s])=>`<img src="${s}" alt="">`).join("");
   const fig=(k,s)=>{const [n,t]=k.split("|");return `<figure><img src="${s}" alt="${esc(n)}, ${esc(t)}" loading="lazy"><figcaption><b>${esc(n)}</b>${esc(t)}</figcaption></figure>`;};
   document.querySelectorAll("[data-photos]").forEach(g=>{
     let list;
