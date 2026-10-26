@@ -1031,12 +1031,12 @@ footer.site .base{grid-column:1/-1;border-top:1px solid #23415a;padding-top:16px
         <p>Sign up for <i>Newsplash</i>, our monthly newsletter, with news from our churches, upcoming events, prayer requests and a note from the Director's Desk.</p>
         <p><a href="#events" data-scroll="news">Read the latest issue →</a> · <a href="#events">See upcoming events →</a></p>
       </div>
-      <form class="signup" id="signup" novalidate>
+      <form class="signup js-netlify" id="signup" name="newsplash-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="newsplash-signup"><input type="hidden" name="source" value="Home page signup"><p hidden><label>Leave this empty<input name="bot-field"></label></p>
         <div class="row">
-          <label for="su-first">First name<input id="su-first" autocomplete="given-name"></label>
-          <label for="su-last">Last name<input id="su-last" autocomplete="family-name"></label>
+          <label for="su-first">First name<input id="su-first" name="first-name" autocomplete="given-name"></label>
+          <label for="su-last">Last name<input id="su-last" name="last-name" autocomplete="family-name"></label>
         </div>
-        <label for="su-email">Email address<input id="su-email" type="email" autocomplete="email" required></label>
+        <label for="su-email">Email address<input id="su-email" name="email" type="email" autocomplete="email" required></label>
         <button class="btn" type="submit">Sign up</button>
         <p class="formnote" id="su-msg">One email a month. Unsubscribe anytime.</p>
       </form>
@@ -1577,10 +1577,10 @@ footer.site .base{grid-column:1/-1;border-top:1px solid #23415a;padding-top:16px
           </div>
         </article>
         <div style="display:grid;gap:16px;min-width:0">
-          <form class="signup" id="nlForm" novalidate>
+          <form class="signup js-netlify" id="nlForm" name="newsplash-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="newsplash-signup"><input type="hidden" name="source" value="News page signup"><p hidden><label>Leave this empty<input name="bot-field"></label></p>
             <h3>Get <i>Newsplash</i> by email</h3>
-            <label for="nl-email">Email address<input id="nl-email" type="email" autocomplete="email"></label>
-            <label for="nl-church">Your church (optional)<input id="nl-church"></label>
+            <label for="nl-email">Email address<input id="nl-email" name="email" type="email" autocomplete="email" required></label>
+            <label for="nl-church">Your church (optional)<input id="nl-church" name="church"></label>
             <button class="btn" type="submit">Subscribe</button>
             <p class="formnote" id="nl-msg">One email a month. Unsubscribe anytime.</p>
           </form>
@@ -1769,19 +1769,20 @@ footer.site .base{grid-column:1/-1;border-top:1px solid #23415a;padding-top:16px
           <div><dt>Follow</dt><dd style="display:flex;gap:16px;flex-wrap:wrap"><a href="https://www.facebook.com/profile.php?id=61595842053828" target="_blank" rel="noopener">Facebook</a><a href="https://twitter.com/trbatexas" target="_blank" rel="noopener">X (Twitter)</a><a href="https://www.pinterest.com/trbatexas/" target="_blank" rel="noopener">Pinterest</a></dd></div>
         </dl>
       </div>
-      <form class="signup" id="prayer" novalidate>
+      <form class="signup js-netlify" id="prayer" name="prayer-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="prayer-request"><input type="hidden" name="source" value="Contact section"><p hidden><label>Leave this empty<input name="bot-field"></label></p>
         <h3>Send a message or prayer request</h3>
-        <label for="pr-name">Your name<input id="pr-name" autocomplete="name"></label>
-        <label for="pr-email">Email or phone<input id="pr-email" autocomplete="email"></label>
-        <label for="pr-type"><span>This is a…</span><select id="pr-type"><option>Prayer request</option><option>General question</option><option>Block Party Trailer reservation</option><option>Church opportunity</option></select></label>
-        <label for="pr-msg">Message<textarea id="pr-msg"></textarea></label>
-        <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" id="pr-private" style="width:auto"> Keep my prayer request confidential</label>
+        <label for="pr-name">Your name<input id="pr-name" name="name" autocomplete="name" required></label>
+        <label for="pr-email">Email or phone<input id="pr-email" name="email-or-phone" autocomplete="email" required></label>
+        <label for="pr-type"><span>This is a…</span><select id="pr-type" name="type"><option value="prayer-request">Prayer request</option><option value="general-question">General question</option><option value="trailer-reservation">Block Party Trailer reservation</option><option value="church-opportunity">Church opportunity</option></select></label>
+        <label for="pr-msg">Message<textarea id="pr-msg" name="message" required></textarea></label>
+        <label style="display:flex;gap:8px;align-items:center;font-weight:500"><input type="checkbox" id="pr-private" name="confidential" value="yes" style="width:auto"> Keep my prayer request confidential</label>
         <button class="btn" type="submit">Send</button>
         <p class="formnote" id="pr-msg-out">We'll reply within two business days.</p>
       </form>
     </div>
   </div>
 </section>
+<form name="general-question" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="source"><input name="name"><input name="email-or-phone"><input name="type"><textarea name="message"></textarea><input name="confidential"><input name="bot-field"></form><form name="trailer-reservation" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="source"><input name="name"><input name="email-or-phone"><input name="type"><textarea name="message"></textarea><input name="confidential"><input name="bot-field"></form><form name="church-opportunity" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="source"><input name="name"><input name="email-or-phone"><input name="type"><textarea name="message"></textarea><input name="confidential"><input name="bot-field"></form>
 </main>
 
 <footer class="site">
@@ -1977,7 +1978,26 @@ renderChips(); renderDir();
   }
   document.getElementById("evFilter").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;f=b.dataset.f;document.querySelectorAll("#evFilter .chip").forEach(c=>c.setAttribute("aria-pressed",c===b));render();});
   render();
-  document.getElementById("nlForm").addEventListener("submit",e=>{e.preventDefault();const ok=/\S+@\S+\.\S+/.test(document.getElementById("nl-email").value);const m=document.getElementById("nl-msg");m.textContent=ok?"Thanks! On the live site, you'd now be subscribed to Newsplash.":"Enter an email address, like name@example.com.";m.className=ok?"formnote ok":"formnote";});
+  document.querySelectorAll("form.js-netlify").forEach(f=>{
+    const out=f.querySelector(".formnote:last-of-type");
+    const sel=f.querySelector('select[name="type"]');
+    f.addEventListener("submit",async e=>{
+      e.preventDefault();
+      const missing=[...f.querySelectorAll("[required]")].find(x=>!x.value.trim());
+      const em=f.querySelector('input[type="email"]');
+      if(missing||(em&&!/\S+@\S+\.\S+/.test(em.value))){out.textContent=ES_ON()?"Complete los campos requeridos.":"Please fill in the required fields.";out.className="formnote";(missing||em).focus();return;}
+      if(sel){f.querySelector('input[name="form-name"]').value=sel.value;}
+      const btn=f.querySelector('button[type="submit"]');btn.disabled=true;
+      try{
+        const r=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(f)).toString()});
+        if(!r.ok)throw 0;
+        out.textContent=sel?(ES_ON()?"¡Gracias! Lo recibimos y le responderemos pronto.":"Thank you! We received it and will get back to you soon."):(ES_ON()?"¡Gracias! Ya está suscrito a Newsplash.":"Thanks! You're signed up for Newsplash.");
+        out.className="formnote ok";f.reset();
+      }catch(_){out.textContent=ES_ON()?"No se pudo enviar. Llame a la oficina al 936-336-9232.":"Sorry, that didn't go through. Please call the office at 936-336-9232.";out.className="formnote";}
+      btn.disabled=false;
+    });
+  });
+  function ES_ON(){return document.documentElement.lang==="es";}
 })();
 
 /* visual upgrade */
