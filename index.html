@@ -2023,7 +2023,7 @@ renderChips(); renderDir();
         const r=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(f)).toString()});
         if(!r.ok)throw 0;
         out.textContent=sel?(ES_ON()?"¡Gracias! Lo recibimos y le responderemos pronto.":"Thank you! We received it and will get back to you soon."):(ES_ON()?"¡Gracias! Ya está suscrito a The Crossing.":"Thanks! You're signed up for The Crossing.");
-        out.className="formnote ok";f.reset();
+        out.className="formnote ok";const keep=sel&&sel.value;f.reset();if(sel){sel.value=keep;sel.dispatchEvent(new Event("change"));}
       }catch(_){out.textContent=ES_ON()?"No se pudo enviar. Llame a la oficina al 936-336-9232.":"Sorry, that didn't go through. Please call the office at 936-336-9232.";out.className="formnote";}
       btn.disabled=false;
     });
